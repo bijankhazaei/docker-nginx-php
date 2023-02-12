@@ -1,0 +1,15 @@
+{
+    "name": "bijan/app",
+    "autoload": {
+        "psr-4": {
+            "Bijan\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bijan Khazaei",
+            "email": "bijankhazaei@gmail.com"
+        }
+    ],
+    "require": {}
+}
