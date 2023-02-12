@@ -45,4 +45,10 @@ RUN chown -R nobody.nobody /var/www/html/ /run /var/www/lib/nginx /var/log/nginx
 # Switch to nobody.
 USER nobody
 
-# Add
+# Add application
+COPY --chown=nobody src/ /var/www/html
+
+EXPOSE ${APP_LOCAL_PORT}
+
+# Supervisord start nginx & php-fpm
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord/conf.d/supervisord.conf"]
