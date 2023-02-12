@@ -26,3 +26,23 @@ RUN apk add --no-cache \
   npm \
   supervisor
 
+# Copy Configuration file for nginx
+COPY config/nginx.conf /etc/nginx/nginx.conf
+
+# Copy configuration file for - default server
+COPY config/conf.d /etc/nginx/conf.d
+
+# Copy configuration for PHP-FPM
+COPY config/fpm-pool.conf /etc/php-fpm.d/www.conf
+COPY config/php.ini /etc/php81/conf.d/custom.ini
+
+# Copy configuration for supervisor
+COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# accessable file or folder for nobbody user
+RUN chown -R nobody.nobody /var/www/html/ /run /var/www/lib/nginx /var/log/nginx
+
+# Switch to nobody.
+USER nobody
+
+# Add
