@@ -1,3 +1,3 @@
 # Base image 
 
-base image for laravel and nodejs applications
+base image for PHP and NodeJS applications
